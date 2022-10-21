@@ -1,0 +1,121 @@
+body {
+	background-color: #e8e8e8;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.content {
+	width: 900px;
+	padding: 123px 0 0 291px;
+}
+/* Блок заголовка*/
+.header {
+	margin: 0px 0px 16px 0px;
+}
+.header h1{
+	font-size: 14px;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 2.8px;
+}
+/* Блок списков*/
+.content-listblock {
+	margin: 0px 0px 60px 0px;
+}
+.content-listblock {}
+.content-listblock ul { margin: 0px 0px 65px 0px; }
+.content-listblock ul:last-child {
+	margin: 0px 0px 0px 0px;
+}
+.content-listblock li {
+	margin: 0px 0px 10px 0px;
+	font-size: 20px;
+	line-height: 27px;
+	color: #273d46;
+}
+/* Маркер списка в виде галочки через псевдоэлементы*/
+.content-listblock li:before {
+	content: '';
+	display: inline-block;
+	width: 25px;
+	height: 19px;
+	background: url(images/icons/check.png) left no-repeat;
+	margin: 0px 11px 0px 0px;
+}
+.content-listblock li:hover {
+	color: #d55a5a;
+}
+.content-listblock li:hover:before {
+	background: url(images/icons/check_red.png) left no-repeat;
+}
+.content-listblock__list1 li:nth-child(1) {
+	text-decoration: line-through;
+}
+.content-listblock__list1 li:nth-child(2) {
+	font-weight: 700;
+}
+.content-listblock__list1 li:nth-child(3) {
+	font-style: italic;
+}
+.content-listblock__list1 li:nth-child(4) {
+	text-transform: uppercase;
+}
+/* Блок кнопки и поля ввода*/
+.button-input {
+	margin: 0px 0px 60px 0px;
+
+}
+.button-input__link span {
+	padding: 0 10px 0 0;
+}
+.button-input__link {
+	display: inline-block;
+	background: rgba(128, 183, 179, 1);
+	box-shadow: 0px 6px 40px 0 rgba(128, 183, 179, 0.54);
+	width: 197px;
+	height: 44px;
+	line-height: 44px;
+	border-radius: 22px;
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 2.8px;
+	margin: 0px 0px 40px 24px;
+}
+.button-input__link:after {
+	content: '';
+	display: inline-block;
+	width: 21px;
+	height: 14px;
+	background: url(images/icons/arrow.png) right no-repeat;
+}
+.button-input__link:hover {
+	background-color: #3a5856;
+}
+.button-input__link:active {
+	background-color: #818181;
+}
+.button-input__input {
+	display: block;
+	width: 292px;
+	height: 50px;
+	border: solid 1px #b0b0b0;
+	font-size: 18px;
+	line-height: 44px;
+	padding: 0px 10px;
+}
+.button-input__input:focus {
+	box-shadow: 0 0 20px 0 rgba(127, 190, 213, 0.93);
+}
+/* Блок текста*/
+.text p {
+	font-size: 18px;
+	line-height: 1.3;
+	letter-spacing: 2px;
+	margin: 0px 0px 20px 0px;
+}
+.text p:nth-child(1):first-line {
+	color: #d55a5a;
+}
+.text p:nth-child(2):first-letter {
+	color: #d55a5a;
+	font-size: 30px;
+}
