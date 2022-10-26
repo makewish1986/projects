@@ -1,0 +1,471 @@
+/* МИКСИНЫ > */
+@mixin anim($time,$delay){-webkit-transition: all $time ease $delay;-moz-transition: all $time ease $delay;-ms-transition: all $time ease $delay;-o-transition: all $time ease $delay;transition: all $time ease $delay;}
+@mixin scale($num){-moz-transform: scale($num);-ms-transform: scale($num);-webkit-transform: scale($num);-o-transform: scale($num);transform: scale($num);}
+@mixin rotate($deg){-moz-transform: rotate($deg);-ms-transform: rotate($deg);-webkit-transform: rotate($deg);-o-transform: rotate($deg);transform: rotate($deg);}
+@mixin flexbox() {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;font-size: 0;}
+@mixin flexorder($val){-webkit-box-ordinal-group: $val;-moz-box-ordinal-group: $val;-ms-flex-order: $val;-webkit-orer: $val;order: $val;}
+
+/* < МИКСИНЫ */
+
+/* ШРИФТЫ > */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
+// Шрифт по умолчанию
+$fontfamily:"Montserrat";
+
+/* < ШРИФТЫ*/
+
+/* ПЕРЕМЕННЫЕ > */
+$minwidth:320px;
+$mw:1170;
+$md1:$mw+12;
+$md2:992.98;
+$md3:767.98;
+$md4:479.98;
+/* < ПЕРЕМЕННЫЕ */
+
+/* ОБНУЛЕНИЕ > */
+*{padding: 0px;margin: 0px;border: 0px;}
+*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav,footer,header,aside,section{display: block;}
+html,body{height: 100%;width: 100%;min-width: $minwidth;position: relative;color:#000;}
+body{font-size: 100%;line-height: 1;font-size: 14px;font-family: $fontfamily;-ms-text-size-adjust: 100%;-moz-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;
+	&.lock{overflow: hidden;
+		@media (max-width: $md3+px) {
+			width: 100%;
+			position: fixed;
+			overflow: hidden;
+		}
+	}
+}
+input,button,textarea{font-family: $fontfamily;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
+// -webkit-overflow-scrolling: touch;
+// animation-play-state: paused !important;
+/* < ОБНУЛЕНИЕ */
+
+/* ОБЩИЕ ПАРАМЕТРЫ > */
+// Дополнительный шрифт
+.pts {
+	font-family: "PT Serif";
+}
+// Синий градиент поверх картинки
+.bluebg {
+	position: relative;
+	overflow: hidden;
+	&:after {
+		content: '';
+		@include rotate(18deg);
+		position: absolute;
+		width: 35%;
+		height: 130%;
+		left: -50px;
+		top: -95px;
+		background-image: linear-gradient(198deg, #007397 0%, rgba(0, 115, 151, 0) 100%);
+		}
+}
+// Общий вид заголовков блоков
+.title {
+	color: #3c3f3d;
+	font-family: "PT Serif";
+	font-size: 32px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	line-height: 48px;
+	text-transform: uppercase;
+	@media (max-width:$md3+px) {
+		font-size: 25px;
+		line-height: 33px;
+	}
+}
+
+/* < ОБЩИЕ ПАРАМЕТРЫ */
+
+/* ОБОЛОЧКА > */
+.wrapper{width: 100%;min-height: 100%;overflow: hidden;
+	&.loaded{}
+}
+/* < ОБОЛОЧКА */
+
+/* ОСНОВНАЯ СЕТКА > */
+.container{max-width:$mw+px;margin: 0 auto;width: 100%;
+	@media (max-width:$md1+px){max-width: 970px;}
+	@media (max-width:$md2+px){max-width: 750px;}
+	@media (max-width:$md3+px){max-width: none;padding:0 10px;}
+}
+/* < ОСНОВНАЯ СЕТКА */
+
+/* ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ > */
+// @import "datepicker";
+// @import "popover.min";
+// @import "baguetteBox;
+// @import "pagging";
+@import "header";
+@import "footer";
+/* < ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ */
+
+/* ОСНОВНОЙ БЛОК > */
+.ibg {
+	background-position: top;
+	background-size: cover;
+	background-repeat: no-repeat;
+	img {
+		display: none;
+	}
+}
+//====================
+.mainblock {
+	margin: 0px 0px 100px 0px;
+	&__imageblock {
+		margin: 0px 0px 40px 0px;
+		@media (max-width:$md2+px) {margin: 0px 0px 25px 0px;}
+	}
+	&__bottomblock {}
+	@media (max-width:$md2+px) {margin: 0px 0px 80px 0px;}
+	@media (max-width:$md3+px) {margin: 50px 0px;}
+}
+.imageblock {
+	position: relative;
+	height: 411px;
+	&__title {
+		@extend .pts;
+		position: absolute;
+		bottom: 80px;
+		right: 0;
+		text-shadow: 0 3px 1px rgba(0, 0, 0, 0.6);
+		color: #fff;
+		font-size: 32px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		line-height: 48px;
+		text-transform: uppercase;
+		z-index: 5;
+		max-width: 770px;
+		padding: 0px 20px 0px 0px;
+		@media (max-width:$md1+px) {
+			max-width: 670px;
+			font-size: 28px;
+			line-height: 44px;
+		}
+		@media (max-width:$md2+px) {
+			max-width: 500px;
+			font-size: 20px;
+			line-height: 35px;
+			bottom: 50px;
+		}
+		@media (max-width:$md3+px) {
+			position: relative;
+			bottom: 0;
+			max-width: none;
+			text-align: center;
+			padding: 20px;
+			font-size: 18px;
+			line-height: 30px;
+		}
+	}
+	&__bg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	@media (max-width:$md2+px) {height: 300px;}
+	@media (max-width:$md3+px) {
+		height: auto;
+		min-height: 250px;
+		@include flexbox();
+		justify-content: center;
+		align-items: center;
+	}
+}
+.bottomblock {
+	text-align: center;
+	&__text {
+		color: #646667;
+		font-size: 20px;
+		font-weight: 300;
+		line-height: 36px;
+		max-width: 970px;
+		margin: 0px auto;
+		@media (max-width:$md2+px) {
+			font-size: 16px;
+			line-height: 28px;
+		}
+	}
+	&__btn {
+		margin: 40px 0px 0px 0px;
+		@media (max-width:$md2+px) {margin: 25px 0px 0px 0px;}
+	}
+
+}
+//====================
+
+.investor {
+	margin: 0px 0px 100px 0px;
+	@media (max-width:$md2+px) {
+		margin: 0px 0px 60px 0px;
+	}
+	@media (max-width:$md3+px) {
+		margin: 0px 0px 50px 0px;
+	}
+	&__title {
+		margin: 0px 0px 50px 0px;
+		@media (max-width:$md3+px) {
+			margin: 0px 0px 20px 0px;
+		}
+	}
+	&__text {
+		max-width: 670px;
+		color: #646667;
+		font-size: 20px;
+		line-height: 36px;
+		font-weight: 300;
+		margin: 0px 0px 40px 0px;
+		@media (max-width:$md3+px) {
+			font-size: 16px;
+			line-height: 24px;
+			margin: 0px 0px 20px 0px;
+		}
+	}
+	&__text {}
+	&__btn {}
+}
+.stat-investor {
+	@include flexbox();
+	justify-content: space-between;
+	margin: 0px -5px 30px -5px;
+	&__column {
+		flex: 0 1 auto;
+		padding: 0px 5px;
+		margin: 0px 0px 25px 0px;
+		@media (max-width:$md3+px) {
+			flex: 0 0 33.333%;
+		}
+		@media (max-width:$md4+px) {
+			flex: 0 0 50%;
+		}
+	}
+	&__item {}
+	@media (max-width:$md3+px) {
+		margin: 0px -5px 0px -5px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+.item-stat {
+	text-align: center;
+	&__value {
+		@extend .pts;
+		color: #007397;
+		font-size: 54px;
+		text-transform: uppercase;
+		margin: 0px 0px 7px 0px;
+		@media (max-width:$md2+px) {
+			margin: 0px 0px 5px 0px;
+			font-size: 40px;
+		}
+	}
+	&__text {
+		color: #aec3d4;
+		font-size: 16px;
+		line-height: 32px;
+		@media (max-width:$md2+px) {
+			font-size: 14px;
+		}
+	}
+}
+
+//====================
+
+.newsmedia {
+	margin: 0px 0px 70px 0px;
+	&__header {}
+	&__body {}
+	&__item {}
+	@media (max-width:$md2+px) {
+		margin: 0px 0px 45px 0px;
+	}
+	@media (max-width:$md3+px) {
+		margin: 0px 0px 20px 0px;
+	}
+}
+.header-newsmedia {
+	@include flexbox();
+	justify-content: space-between;
+	align-items: center;
+	margin: 0px 0px 40px 0px;
+	&__title {
+		@media (max-width:$md3+px) {
+			margin: 0px 0px 20px 0px;
+		}
+	}
+	&__nav {}
+	@media (max-width:$md3+px) {
+		display: block;
+		margin: 0px 0px 20px 0px;
+	}
+}
+.nav-newsmedia {
+	@include flexbox();
+	&__item {
+		color: #d3cfce;
+		font-size: 16px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		line-height: 16px;
+		text-transform: uppercase;
+		margin: 0px 0px 0px 100px;
+		cursor: pointer;
+		&.active {
+			color: #007397;
+		}
+		@media (max-width:$md2+px) {
+			margin: 0px 0px 0px 50px;
+		}
+		@media (max-width:$md3+px) {
+			margin: 0px 0px 10px 0px;
+		}
+	}
+	@media (max-width:$md3+px) {
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+}
+.item-newsmedia {
+	@include flexbox();
+	margin: 0px -15px;
+	&__column {
+		flex: 0 0 33.333%;
+		padding: 0px 15px;
+		margin: 0px 0px 30px 0px;
+		@media (max-width:$md1+px) {
+			padding: 0px 10px;
+		}
+		@media (max-width:$md2+px) {
+			flex: 0 0 50%;
+		}
+		@media (max-width:630px) {
+			flex: 1 1 100%;
+		}
+	}
+	&__content {}
+	@media (max-width:$md1+px) {
+		margin: 0px -10px;
+	}
+	@media (max-width:$md2+px) {
+		flex-wrap: wrap;
+	}
+}
+.content-newsmedia {
+	@include flexbox();
+	flex-direction: column;
+	height: 100%;
+	max-width: 500px;
+	margin: 0px auto;
+	&__header {}
+	&__text {
+		flex:1 1 auto;
+		color: #646667;
+		font-size: 16px;
+		line-height: 32px;
+		padding: 28px 0px;
+	}
+	&__more{
+		color: #007397;
+		font-size: 16px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		line-height: 16px;
+		text-transform: uppercase;
+		&:hover{text-decoration: underline;}
+	}
+}
+.header-contentnewsmedia {
+	height: 370px;
+	position: relative;
+	&__content {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 5;
+		padding: 25px 30px;
+		@media (max-width:$md1+px) {
+			padding: 25px 20px;
+		}
+	}
+	&__image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		&.bluebg {
+			&:after{width: 98%;}
+		}
+	}
+}
+.content-newsmediavalues {
+	&__category {
+		font-size: 12px;
+		color: #fff;
+		letter-spacing: 0.75px;
+		font-weight: 700;
+		text-transform: uppercase;
+		&:hover{text-decoration: underline;}
+	}
+	&__title {
+		color: #fff;
+		font-size: 24px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		line-height: 32px;
+		text-transform: uppercase;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		padding: 0px 30px 70px 30px;
+		&:hover{text-decoration: underline;}
+		@media (max-width:$md1+px) {
+			font-size: 18px;
+			line-height: 24px;
+			padding: 0px 20px 50px 20px;
+		}
+	}
+}
+
+//====================
+
+.country {
+	&__title {
+		margin: 0px 0px 40px 0px;
+		@media (max-width:$md3+px) {
+			margin: 0px 0px 25px 0px;
+		}
+	}
+	&__map {
+		height: 448px;
+	}
+}
+
+
+//====================
+
+/* < ОСНОВНОЙ БЛОК */
+
+/* ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ > */
+@import "forms";
+// @import "ui";
+/* < ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ */

@@ -1,0 +1,72 @@
+/* ФОРМЫ (a.f) >*/
+.form{}
+.form-row{@include flexbox();margin: 0px 15px;}
+.form__column{padding: 0px 15px}
+.form-input{}
+.form-button{}
+/* < ФОРМЫ (a.f) */
+//===================================
+
+/* BUTTONS (a.btn) >*/
+.btn {
+	display: inline-block;
+	padding: 0px 30px;
+	height: 56px;
+	line-height: 56px;
+	overflow: hidden;
+	background-color: #007397;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	position: relative;
+	text-align: center;
+	min-width: 270px;
+	&:after {
+			content: '';
+			width: 0;
+			position: absolute;
+			@include anim(0.8s,0s);
+			height: 100%;
+			left: 50%;
+			top: 0;
+			background-color: #00526b;
+	}
+	span {
+		position: relative;
+		z-index: 2;
+	}
+	&:hover{
+		&:after {
+			left: 0;
+			width: 100%;
+		}
+	}
+	&.fw{width: 100%;}
+	@media (max-width:$md3+px) {
+		@include flexbox();
+		justify-content: center;
+		align-items: center;
+		line-height: 18px;
+		font-size: 14px;	
+	}
+}
+/* < BUTTONS (a.btn) */
+//===================================
+/* INPUT >*/
+input[type=text],input[type=email],input[type=tel],textarea{-webkit-appearance:none;-moz-appearance:none;appearance:none}
+.input {
+	border-radius: 0 !important;
+	width: 100%;
+	display: block;
+	padding: 0px 20px;
+	&.focus {}
+	&.err {}
+}
+textarea.input {
+	resize: none;
+	padding: 0px 0px;
+}
+
+/* < INPUT */
