@@ -1,0 +1,35 @@
+
+/* ФОН ВМЕСТО КАРТИНКИ > */
+._ibg {
+	background-position: top;
+	background-size: cover;
+	background-repeat: no-repeat;
+	img {
+		display: none;
+	}
+}
+/* < ФОН ВМЕСТО КАРТИНКИ */
+
+//====================
+
+/* СЛАЙДЕР SLICK-CLIDER > */
+.slick-slider {
+	position: relative;
+	.slick-track,.slick-list {}
+	.slick-list {
+		overflow: hidden;
+	}
+	.slick-track {
+		@include flexbox();
+	}
+	.slick-slide {}
+	.slick-dots {
+		li {
+			button {}
+			&.slick-active {
+				button {}
+			}
+		}
+	}
+}
+/* < СЛАЙДЕР SLICK-CLIDER */

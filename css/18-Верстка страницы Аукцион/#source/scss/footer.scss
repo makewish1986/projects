@@ -1,0 +1,107 @@
+//================================
+.footer {
+   background-color: #1c242a;
+   padding: 45px 0px;
+   // .footer__container
+   &__content {
+      display: flex;
+      @media (max-width: 767px) {
+         display: block;
+         text-align: center;
+      }
+   }
+   // .footer__column
+   &__column {
+      &:first-child {
+         flex: 0 0 190px;
+      }
+      &_full {
+         flex: 1 1 auto;
+      }
+   }
+   // .footer__logo
+   &__logo {
+      display: inline-block;
+      margin: 0px 0px 25px 0px;
+      @media (max-width: 767px) {
+         margin: 0px 0px 10px 0px;
+      }
+   }
+   // .footer__info
+   &__info {
+      color: #bb9c66;
+   }
+   // .footer__menu
+   &__menu {
+      padding: 0px 30px;
+      @media (max-width: 767px) {
+         margin: 0px 0px 20px 0px;
+      }
+   }
+   // .footer__list
+   &__list {
+      display: flex;
+      flex-wrap: wrap;
+      li {
+         margin: 15px 15px 0px 0px;
+      }
+      @media (max-width: 767px) {
+         justify-content: center;
+         margin: 15px 7px 0px 7px;
+      }
+   }
+   // .footer__link
+   &__link {
+      font-family: "PFDin";
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      @media (min-width: 992px) {
+         &:hover {
+            text-decoration: underline;
+         }
+      }
+   }
+   // .footer__contacts
+   &__contacts {
+      padding: 12px 0px 0px 0px;
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      @media (max-width: 767px) {
+         align-items: center;
+      }
+   }
+   // .footer__phone
+   &__phone {
+      display: flex;
+      white-space: nowrap;
+      align-items: flex-start;
+      font-family: "BravoRGRegular";
+      font-size: 50px;
+      text-transform: uppercase;
+      color: #bb9c66;
+      small {
+         margin: 2px 5px 0px 0px;
+         font-size: 25px;
+      }
+      @media (max-width: 991px) {
+         font-size: 40px;
+         small {
+            font-size: 20px;
+         }
+      }
+   }
+   // .footer__callback
+   &__callback {
+      color: #bb9c66;
+      background: url("../img/icons/footer-arrow.png") left no-repeat;
+      padding: 0px 0px 0px 12px;
+      span {
+         border-bottom: 1px dashed;
+      }
+   }
+}
