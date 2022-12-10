@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Java Script</title>
+  </head>
+  <body>
+    <section>
+      <h1>Calculator</h1>
+      <hr>
+      <div class='operation-buttons'>
+        <button class="operation-button">+</button>
+        <button class="operation-button">-</button>
+        <button class="operation-button">&times;</button>
+        <button class="operation-button">&divide;</button>
+      </div>
+      <hr>
+      <div class="inputs">
+        <div>
+          <label>number1</label>
+          <input placeholder="num1..." id="number1" value="21">
+        </div>
+        <div>
+          <label>number2</label>
+          <input placeholder="num2..." id="number2" value="7">
+        </div>
+      </div>
+      <hr>
+      <div class='number-buttons'>
+        <button class="number-button">7</button>
+        <button class="number-button">8</button>
+        <button class="number-button">9</button>
+        <button class="number-button">4</button>
+        <button class="number-button">5</button>
+        <button class="number-button">6</button>
+        <button class="number-button">1</button>
+        <button class="number-button">2</button>
+        <button class="number-button">3</button>
+        <button class="number-button">0</button>
+      </div>
+      <hr>
+      <h1>Result</h1>
+      <p id="result-field"></p>
+     </section>
+    <script>
+      // Инициализация переменных-элементов HTML
+      var inpNum1 = document.getElementById('number1');
+      var inpNum2 = document.getElementById('number2');
+      var resultFiled = document.getElementById('result-field');
+
+      // Массив (коллекция) из всех существующих кнопок с классом 'operation-button'
+      var arrayOperationButtons = document.getElementsByClassName('operation-button');
+      // Массив (коллекция) из всех существующих кнопок с классом 'number-button'
+      var arrayNumberButtons = document.getElementsByClassName('number-button');
+
+      //Перебираем все кнопки и "вешаем" на них событие Listener
+      for (var i = 0; i < arrayOperationButtons.length; i++) {
+        arrayOperationButtons[i].addEventListener('click', makeOperationAndOut);
+      }
+
+      // Выполняет нужную операцию и выводит результат
+      // В качестве параметра в функцию передается объект события, на котором произошел клик
+      function makeOperationAndOut(eventObject) { 
+        // Определяется, что это был за объект, в данном случае это будут кнопки
+        var clickedElement = eventObject.currentTarget; 
+        // Определяем, какую операцию надо будет сделать в зависимости от содержимого внутри найденного элемента (кнопки)
+        var operation = clickedElement.innerHTML; 
+        // Преобразуем содержимое <input> в число, иначе при сложении например будет работать конкатенация строк, а не сложение чисел
+        var number1 = Number(inpNum1.value); 
+        var number2 = Number(inpNum2.value);
+        // Хранилище для дальнейшего вывода результата (это будет или результат операции или какое-то информационное сообщение)
+        var result;
+        // В зависимости от того, какая операция передалась в переменную opration, делаем нужные действия.
+        // Для деления делаем дополнительную проверку на деление на ноль
+        // Последнее else выведет 'Неверный код операции'. Это может произойти, например, тогда, когда
+        // мы добавим новую кнопку с новой операцией и не пропишем в этом условии, как она должна обрабатываться.
+        if (operation === '+') {
+          result = number1 + number2;
+        } else if (operation === '-') {
+          result = number1 - number2;
+        } else if (operation === String.fromCharCode(0x00D7)) { //представление кодировки знака умножения &times; в JS
+          result = number1 * number2;
+        } else if (operation === String.fromCharCode(0x00F7)) { //представление кодировки знака деления &divide; в JS
+          if (number2 === 0) {
+          result = 'Делить на 0 нельзя';
+          } else {
+            result = number1 / number2;
+          }
+        } else {
+          result = 'Неверный код операции';
+        }
+        // Вывод результата в поле resultFiled - соответствует блоку <p> в HTML разметке
+        resultFiled.innerHTML = result;
+      }
+    </script>
+  </body>
+</html>

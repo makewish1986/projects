@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Сортировка выбором</title>
+  </head>
+  <body>   
+    <h3>"Грокаем алгоритмы". Глава 1. Сортировка выбором, с.53-57</h3>
+    <p>Алгоритм сортировки выбором.</p>
+    <p>Суть метода сортировки по возрастанию:</p>
+    <ol>
+      <li>
+        Создаем новый пустой массив, в который будем постепенно складывать элементы от наименьшего к наибольшему
+      </li>
+      <li>
+        Находим минимальный элемент в изначальном массиве
+      </li>
+      <li>
+        Добавляем этот элемент в конец нашего нового массива
+      </li>
+      <li>
+        Удаляем этот элемент из первоначального массива
+      </li>
+      <li>
+        Повторяем действия 2-4, пока изначальный массив не станет пустым
+      </li>
+
+    </ol>
+    
+    <p>Вывод в консоль.</p>
+    <p>Примечание: в книге показывается алгоритм сортировки по возрастанию. Дописал код, чтобы была еще и сортировка по убыванию.</p>
+
+    <script>
+
+      let myArray = [93, 25, 57, 88, 11, 55, 20, 80, 54, 19];
+
+      var minToMax = sortMinToMax(myArray);
+      var maxToMin = sortMaxToMin(myArray);
+      console.log(`Исходный массив: [${myArray}]`);
+      console.log(`Сортировка по возрастанию: [${minToMax}]`);
+      console.log(`Сортировка по убыванию: [${maxToMin}]`);
+      
+      // Вспомогательная функция для сортировки по возрастанию
+      // Возвращает индекс минимального элемента массива array
+      function getIndexOfMin(array) {
+        let min = array[0];
+        let minIndex = 0;
+        for (let i = 1; i < array.length; i++) {
+          if (array[i] < min) {
+            min = array[i];
+            minIndex = i;
+          }
+        }
+        return minIndex;
+      }
+
+      // Реализация алгоритма сортировки по возрастанию методом выбора
+      // Методом slice(0) создаем копию иначального массива. Алгоритм сортировки будет работать с копией
+      // Если это не сделать, мы "испортим" изначальный массив
+      // и не сможем делать с ним другие операции в основном коде
+      function sortMinToMax(arrayOrigin) {
+        let array = arrayOrigin.slice(0);
+        let newArray = [];
+        let arrayLength = array.length;
+        for (let i = 0; i < arrayLength; i++) {
+          let minIndex = getIndexOfMin(array);
+          newArray.push(array[minIndex]);
+          array.splice(minIndex, 1);
+        }
+        return newArray;
+      }
+
+      // Вспомогательная функция для сортировки по убыванию
+      // Возвращает индекс максимального элемента массива array
+      function getIndexOfMax(array) {
+        let max = array[0];
+        let maxIndex = 0;
+        for (let i = 1; i < array.length; i++) {
+          if (array[i] > max) {
+            max = array[i];
+            maxIndex = i;
+          }
+        }
+        return maxIndex;
+      }
+
+      // Реализация алгоритма сортировки по убыванию методом выбора
+      // Методом slice(0) создаем копию иначального массива. Алгоритм сортировки будет работать с копией
+      // Если это не сделать, мы "испортим" изначальный массив
+      // и не сможем делать с ним другие операции в основном коде
+      function sortMaxToMin(arrayOrigin) {
+        let array = arrayOrigin.slice(0);
+        let newArray = [];
+        let arrayLength = array.length;
+        for (let i = 0; i < arrayLength; i++) {
+          let maxIndex = getIndexOfMax(array);
+          newArray.push(array[maxIndex]);
+          array.splice(maxIndex, 1);
+        }
+        return newArray;
+      }
+
+
+      
+
+
+    </script>
+  </body>
+</html>

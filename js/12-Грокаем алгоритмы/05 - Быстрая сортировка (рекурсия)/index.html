@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Быстрая сортировка</title>
+  </head>
+  <body>
+    <h3>"Грокаем алгоритмы". Глава 4. Быстрая сортировка, с.85-92</h3>
+    <p>Алгоритм быстрой сортировки (с использованием рекурсии).</p>
+    <p>Суть метода быстрой сортировки:</p>
+    <ol>
+      <li>
+        В передаваемом массиве выбирается любой его элемент и он назначается "якорем" (anchor).<br>
+        Для удобства в качестве "якоря" будем брать 1-й элемент массива - array[0]
+      </li>
+      <li>
+        Создаем два новых массива:<br>
+        left - левая часть - все элементы <= нашего "якоря",<br>
+        right - правая часть - все элементы > нашего "якоря",<br>
+      </li>
+      <li>
+        Получатся, если мы сделаем так, что будем иметь отсортированную левую часть, "якорь" и отсортированную правую часть,<br>
+        то мы получаем отсортированный изначальный массив, если соединим все три части [left] + anchor + [right]
+      </li>
+      <li>
+        Все, что нам остается сделать - это сделать сортировку для левой и правой части.<br>
+        А для этого снова используем нашу же функцию сортировки, вызываем сами себя (образуется рекурсия).
+      </li>
+      <li>
+        Для организации рекурсии, чтобы иметь выход из нее, мы будем пользоваться базовыми случаями:<br>
+        Базовый случай №1 - [] - пустой массив. Он уже отсортирован. Возвращаем его.<br>
+        Базовый случай №2 - [3] - массив с одним элементом. Он уже отсортирован. Возвращаем его.<br>
+        Получается, что перед выполнением алгоритма разделения массивов, нам нужно просто проверить поступивший массив на длину.<br>
+        Если его длина меньше 2, то возвращаем его самого, если нет - то делаем сортировку.
+      </li>
+    </ol>
+    <p>Вывод в консоль.</p>
+
+    <script>
+      let myArray = [93, 25, 57, 88, 11, 55, 20, 80, 54, 19];
+
+      var minToMax = sortMinToMax(myArray);
+      var maxToMin = sortMaxToMin(myArray);
+      console.log(`Исходный массив: [${myArray}]`);
+      console.log(`Сортировка по возрастанию: [${minToMax}]`);
+      console.log(`Сортировка по убыванию: [${maxToMin}]`);
+
+      // Алгоритм быстрой сортировки по возрастанию
+      function sortMinToMax(array) {
+        if (array.length < 2) {
+          return array;
+        } else {
+          let left = [];
+          let right = [];
+          let anchor = array[0];
+          for (let i = 1; i < array.length; i++) {
+            if (array[i] <= anchor) {
+              left.push(array[i]);
+            } else {
+              right.push(array[i]);
+            }
+          }
+          let lSort = sortMinToMax(left);
+          let rSort = sortMinToMax(right);
+          let result = [].concat(lSort, anchor, rSort);
+          return(result);
+        }
+      }
+
+      // Алгоритм быстрой сортировки по убыванию
+      function sortMaxToMin(array) {
+        if (array.length < 2) {
+          return array;
+        } else {
+          let left = [];
+          let right = [];
+          let anchor = array[0];
+          for (let i = 1; i < array.length; i++) {
+            if (array[i] >= anchor) {
+              left.push(array[i]);
+            } else {
+              right.push(array[i]);
+            }
+          }
+          let lSort = sortMaxToMin(left);
+          let rSort = sortMaxToMin(right);
+          let result = [].concat(lSort, anchor, rSort);
+          return(result);
+        }
+      }
+      
+    </script>
+  </body>
+</html>

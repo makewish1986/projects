@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>Java script Learning</title>
+  </head>
+  <body>
+
+    
+    <script>
+      // Отдельный класс для выноса наружу способности подписываться на события
+      class Publisher {
+        _triggerEvent(eventName) {
+          if (!this._listeners) {
+            this._listeners = {};
+          }
+          let array = this._listeners[eventName];
+          if (!!array) {
+            array.forEach(function(callback) {
+              callback();
+            });
+          }
+        }
+
+        addEventListener(eventName, listener) {
+          if (!this._listeners) {
+            this._listeners = {};
+          }
+          if (!this._listeners[eventName]) {
+            this._listeners[eventName] = [];
+          }
+          this._listeners[eventName].push(listener);
+         }
+      }
+
+      // Класс Car, который наследуется от класса Publisher
+      class Car extends Publisher {
+        constructor() {
+          super();
+          this.speed = 0;  
+        }
+
+        start() {
+          this.speed = 100;
+          this._triggerEvent('start');
+          setTimeout(()=> {
+            this._triggerEvent('speedoverflow');
+          }, 2000);
+          setTimeout(this._stop.bind(this), 4000);
+        }
+
+        _stop() {
+          this.speed = 0;
+          this._triggerEvent('stop');
+        }
+
+        
+      }
+
+      // Создаем экземпляр класса Car
+      var mers = new Car();
+
+      // Подписываемся на события
+      mers.addEventListener('stop', () => {
+        alert('I am John and I know car has stopped!');
+        console.log(mers.speed);
+      });
+      mers.addEventListener('stop', () => {
+        alert('I am Miranda and I know car has stopped!');
+        console.log(mers.speed);
+      });
+      mers.addEventListener('start', () => {
+        alert('Car started');
+        console.log(mers.speed);
+      });
+      mers.addEventListener('speedoverflow', () => {
+        alert('Speed is over flow!');
+        console.log(mers.speed);
+      });
+
+      // Запускаем вручную событие start
+      mers.start();
+    </script>
+  </body>
+</html>

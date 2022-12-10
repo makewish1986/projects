@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Бинарный поиск,</title>
+  </head>
+  <body>
+    <h3>"Грокаем алгоритмы". Глава 1. Бинарный поиск, с.20-27</h3>
+    <p>Алгоритм бинарного поиска (половинного деления).</p>
+    <p>С максимальной эффективностью ищет искомый элемент в заданном массиве.</p>
+    <p>Обязательное условие: массив должен быть ОТСОРТИРОВАН по возрастанию.</p>
+    <p>Вывод в консоль.</p>
+
+    <script>
+      // Задаем ОТСОРТИРОВАННЫЙ список значений array, среди которых будем искать число searchNumber
+      let array = [3, 6, 8, 10, 15, 17, 18, 23, 28, 56, 90, 121];
+      let searchNumber = 10;
+      // result - возвращает номер элемента в массиве array, на котором находистя заданное число searchNumber, если число было найдено
+      let result = binary_search(array, searchNumber);
+      if (result) {
+        console.log(`Искомое число "${searchNumber}" находится в массиве [${array}] на позиции ${result}`);
+      } else {
+        console.log(`Число "${searchNumber}" не найдено в массиве`);
+      }
+      
+      // Реализация алгоритма бинарного поиска
+      // low - текущая нижняя граница массива области поиска
+      // high - текущая верхняя граница массива области поиска
+      // mid - позиция при делении пополам. Если число не делится пополам без остатка, то округляем в меньшую сторону функцией Math.floor
+      // В цикле while ищем элемент. Если он будет найден, return прервет выполнение цикла и вернет нужное значение.
+      // Если цикл while отработает и число не будет найдено, return возвратит null, который понадоится при проверке в момент вывода результата в консоль.
+      function binary_search(array,searchNum) {
+        let low = 0;
+        let high = array.length - 1;
+        let mid;
+        while (low <= high) {
+          mid = Math.floor((low + high)/2);
+          guess = array[mid];
+          if (guess === searchNum) {
+            return mid;
+          } else if (guess > searchNum) {
+            high = mid - 1;
+          } else {
+            low = mid + 1;
+          }
+        }
+        return null;
+      }
+    </script>
+  </body>
+</html>

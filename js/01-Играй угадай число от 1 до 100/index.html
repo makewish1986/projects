@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>GAME!</title>
+  </head>
+  <body>
+    <h1>Let's game! Guess the number</h1>
+    <wrapper class="col2">
+      <section>
+        <p>Try to guess the number in range from 1 to 100.</p>
+        <p>You have 10 attempts.</p>
+      </section>
+      <section>
+        <div>
+          <label for="guessField">Enter a guess:</label>
+          <input type="text" id="guessField" class="guessField">
+          <input type="submit" class="guessSubmit" value="Try!">
+        </div> 
+        <div class="resultParas">
+          <p class="guessesNum"></p>
+          <p class="guesses"></p>
+          <p class="lastResult"></p>
+          <p class="lowOrHi"></p>
+        </div>
+      </section>           
+    </wrapper>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Java Script</title>
+  </head>
+  <body>
+    <section>
+      <h1>Calculator</h1>
+      <hr>
+      <div class='operation-buttons'>
+        <button class="all-button">+</button>
+        <button class="all-button">-</button>
+        <button class="all-button">&times;</button>
+        <button class="all-button">&divide;</button>
+        <button class="all-button result-button">=</button>
+      </div>
+      <hr>
+      <div class='number-buttons'>
+        <button class="all-button">7</button>
+        <button class="all-button">8</button>
+        <button class="all-button">9</button>
+        <button class="all-button">4</button>
+        <button class="all-button">5</button>
+        <button class="all-button">6</button>
+        <button class="all-button">1</button>
+        <button class="all-button">2</button>
+        <button class="all-button">3</button>
+        <button class="all-button">0</button>
+      </div>
+      <hr>
+      <h1>Result</h1>
+      <p id="result-field"></p>
+     </section>
+    <script>
+      // Инициализация переменных
+      // resultFiled - место, куда будем выводить результат - в абзац <p>
+      var resultFiled = document.getElementById('result-field');
+      var result;
+      var num1 = '';
+      var num2 = '';
+      var operation = '';
+      // cancel - флаг, который помогает стирать решенный пример, если начинается новый пример
+      var cancel = false;
+
+      // Массив (коллекция) из всех существующих кнопок с классом 'all-button'
+      var arrayButtons = document.getElementsByClassName('all-button');
+
+      //Перебираем все кнопки и "вешаем" на них событие Listener
+      for (var i = 0; i < arrayButtons.length; i++) {
+        arrayButtons[i].addEventListener('click', makeOperationAndOut);
+      }
+
+      // Выполняет нужную операцию и выводит результат
+      // В качестве параметра в функцию передается объект события, на котором произошел клик
+      function makeOperationAndOut(eventObject) {
+        // Определяем, что это был за объект, на котором произошло событие
+        // в данном случае это будут кнопки в результате клика по ним
+        var clickedElement = eventObject.currentTarget; 
+        // Определяем содержимое того, что кликнули (это может быть цифра, операция, или знак равно)
+        var buttonContent = clickedElement.innerHTML;
+        // Если пользователь уже решал пример и на экране что-то есть,
+        // то нужно очистить поле для нового примера.
+        // для этого используем флаг cancel
+        if (cancel) {
+          resultFiled.innerHTML = '';
+          cancel = false;
+        }
+
+        // Блок условий делает действия в зависимости от того, что нажато
+        // Сначала он проверяет является ли введенное значение числом.
+        // Если да, то проверяет первое это число или второе. 
+        // При этом учитывается момент, если два раза подряд была нажата цифра, то
+        // число не перезаписывается, а становится двузначным,
+        // трехзначным и т.д. путем конкатенации строк
+        // Если введена операция - это некий знак, что
+        // пользователь закончил вводить число 1 и потом будет вводить число 2
+        // Если два раза подряд нажата кнопка операции, запоминается ее последнее значение
+        // Если нажата кнопка "=", то производятся вычисления результата
+        // Все промежуточные нажатия и конечный результат
+        // выводятся в реальном времени на экран в абзац <p>
+        if (!isNaN(buttonContent)) {
+          if (operation === '') {
+            num1 += buttonContent;
+            out(num1);
+          } else {
+            num2 += buttonContent;
+            out(num1 + ' ' + operation + ' ' + num2);
+          }
+        } else if (buttonContent === '=') {
+          num1 = Number(num1);
+          num2 = Number(num2);
+          result = makeOperation(num1,num2,operation);
+          out(num1 + ' ' + operation + ' ' + num2 + ' = ' + result);
+          cancel = true;
+          num1 = '';
+          num2 = '';
+          operation = '';
+        } else {
+          operation = buttonContent;
+          out(num1 + ' ' + operation);
+        }
+      }
+
+      // Функция помогает вывести на экран в абзац <p> то, что передается в ее параметр
+      function out (outContent) {
+        resultFiled.innerHTML = outContent;
+      }
+
+      // Вычисление примера в зависимости от типа операции
+      function makeOperation(numb1,numb2,oper) {
+        if (oper === '+') {
+          res = numb1 + numb2;
+        } else if (oper === '-') {
+          res = numb1 - numb2;
+        } else if (oper === String.fromCharCode(0x00D7)) { //представление кодировки знака умножения &times; в JS
+          res = numb1 * numb2;
+        } else if (oper === String.fromCharCode(0x00F7)) { //представление кодировки знака деления &divide; в JS
+          if (numb2 === 0) {
+          res = 'Делить на 0 нельзя';
+          } else {
+            res = numb1 / numb2;
+          }
+        } else {
+          res = 'Неверный код операции';
+        }
+        return (res);
+      }
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+* {
+	font-size: 20px;
+	line-height: 1.5;
+}
+
+h1 {
+	text-align: center;
+}
+
+section {
+	width: 50%;
+	margin: 0 auto;
+	background-color: lightblue;
+	min-height: 550px;
+}
+
+button {
+	width: 2em;
+	color: rebeccapurple;
+	font-size: 1.2em;
+}
+
+.operation-buttons {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.number-buttons {
+  width: 50%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 20px;
+}
+
+.inputs {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+p {
+	text-align: center;
+	margin: 5px;
+	font-weight: 800;
+	color: red;
+	font-size: 2em;
+}
+
+input {
+	width: 40%;
+}

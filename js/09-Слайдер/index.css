@@ -1,0 +1,9 @@
+.manreart-slider {
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.manreart-slider .slide-img {
+	width: 50%;
+}

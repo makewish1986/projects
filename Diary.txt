@@ -1,0 +1,33 @@
+==================================================
+12.06.2022
+Знакомство с GIT и GITHUB. Установка GIT, регистрация на GITHUB.
+==================================================
+21.10.2022
+Продолжаю знакомиться с GIT и GITHUB.
+https://youtu.be/GsG5roSGha0 - Установка и настройка Git в Windows 10
+https://youtu.be/ng4hke6op-w - Работа с GIT
+https://youtu.be/hP00rxXesik - Работа с GIT
+https://youtu.be/1Km-x_8DSpk - Создание SSH-ключа для связки GIT на компьютере и аккаунта
+Решаю начать перекидывать свои сделанные проекты на GIT
+==================================================
+21.10.2022-22.10.2022
+1)
+Знакомство с Bootstrap.
+Верстка одностраничного сайта на Bootstrap.
+Повторение серии уроков:
+https://youtu.be/MbOcveDTHZQ
+https://youtu.be/sFRrfUt7jc0
+https://youtu.be/S0i1jHCHbQw
+https://youtu.be/-dQTYZFe6Os
+https://youtu.be/ZUH3mYgCVX8
+https://youtu.be/8SO1p5hiS7Q
+https://youtu.be/_Vbl_V_XNIw
+https://youtu.be/MQoMJdJKuKM
+https://youtu.be/yZZn_g0nOPI
+https://youtu.be/kEkAz1S9MRk
+==================================================
+22.10.2022-23.10.2022
+Натяжка верстки на Wordpress
+https://youtu.be/Q5C8MKlbANU
+https://youtu.be/UrkL_RcLfVs
+==================================================

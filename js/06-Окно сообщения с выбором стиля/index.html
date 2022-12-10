@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Function start</title>
+    <style>
+      .msgBox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 242px;
+        background: #eee;
+      }
+
+      .msgBox p {
+        line-height: 1.5;
+        padding: 10px 20px;
+        color: #333;
+        padding-left: 82px;
+        background-position: 25px center;
+        background-repeat: no-repeat;
+      }
+
+      .msgBox button {
+        background: none;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.1rem;
+        color: #aaa;
+      }
+
+    </style>
+  </head>
+  <body>
+    <select>
+      <option value="chat">Chat</option>
+      <option value="warning">Warning</option>
+    </select>
+    <button>Display message box</button>
+    <script>
+      var btn = document.querySelector('button');
+      var messageSelect = document.querySelector('select');
+      //в mesSel кладем значение списка, которое по умолчанию, но если оно меняется, перезаписываем его
+      var mesSel = messageSelect.value;
+      messageSelect.onchange = function() {
+        mesSel = messageSelect.value;
+      }
+
+      //Вызывает окно сообщения. Формируется <div> с <p>, в котором текст сообщения и кнопка закрытия 
+      //msgText - текст сообщения
+      //msgType - тип сообщения. Он зависит от того, что выбрано в списке.
+      //От типа сообщения зависит оформление показываемого сообщения
+      function displayMessage(msgText, msgType) {
+        var html = document.querySelector('html');
+        var panel = document.createElement('div');
+        panel.setAttribute('class', 'msgBox');
+        html.appendChild(panel);
+
+        var msg = document.createElement('p');
+        msg.textContent = msgText;
+        panel.appendChild(msg);
+
+        var closeBtn = document.createElement('button');
+        closeBtn.textContent = 'x';
+        panel.appendChild(closeBtn);
+
+        //По клику на кнопке закрытия удаляет созданный <div> с его содержимым
+        closeBtn.onclick = function() {
+          panel.parentNode.removeChild(panel);
+        }
+
+        //меняем стили в зависимости от типа сообщения
+        if (msgType === 'warning') {
+        msg.style.backgroundImage = 'url(icons/warning.png)';
+        panel.style.backgroundColor = 'red';
+        } else if (msgType === 'chat') {
+          msg.style.backgroundImage = 'url(icons/chat.png)';
+          panel.style.backgroundColor = 'aqua';
+        } else {
+          msg.style.paddingLeft = '20px';
+        }
+      }   
+
+      //ожидаем нажатия кнопки "Display message box"
+      btn.onclick = function() {
+        if (mesSel === 'chat') {
+          displayMessage('Brian: Hi there, how are you today?', mesSel); 
+        } else {
+          displayMessage('Your inbox is almost full — delete some mails', mesSel); 
+        }
+        }
+       
+    </script>
+  </body>
+</html>

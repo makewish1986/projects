@@ -1,0 +1,47 @@
+html, body {
+  margin: 0;
+  font-size: 10px;
+}
+
+html {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  height: inherit;
+}
+
+/*из за прозрачного цвета и белой тени создается эффект размытого текста-->*/
+h1 {
+  font-size: 2.8em;
+  letter-spacing: -1px;
+  position: absolute;
+  margin: 0;
+  /*top: -4px;*/
+  right: 5px;
+
+  color: transparent;
+  text-shadow: 0 0 3px white;
+}
+
+.enter {
+  margin: 10px 0;
+}
+
+.enter button, input, label {
+  font-size: 2.8em;
+}
+
+.enter input {
+  width: 100px;
+  margin: 0 10px;
+}
+
+.enter button {
+  width: 100px;
+  cursor: pointer;
+}
+
+
