@@ -1,0 +1,199 @@
+/* ОБНУЛЕНИЕ > */
+*,*:before,*:after {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+ }
+ a {
+	text-decoration: none;
+ }
+ ul,ol,li {
+	list-style: none;
+ }
+ img {
+	vertical-align: top;
+ }
+ h1,h2,h3,h4,h5,h6 {
+	font-weight: inherit;
+	font-size: inherit;
+ }
+html,body {
+	height: 100%;
+	line-height: 1;
+	font-size: 16px;
+	background-color: #333;
+	color: #fff;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+h1 {
+	font-size: 30px;
+	margin: 0px 0px 30px 0px;
+}
+/* < ОБНУЛЕНИЕ */
+
+/* ОБОЛОЧКА > */
+.wrapper{
+	min-height: 100%;
+	padding: 50px;
+}
+/* < ОБОЛОЧКА */
+
+/* ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ > */
+/* < ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ */
+
+/* ОСНОВНОЙ БЛОК > */
+//===========================================================
+.form {
+	// .form_margin
+	&_margin {
+		margin: 0px 0px 30px 0px;
+	}
+	// .form__item
+	&__item {
+		margin: 0px 0px 30px 0px;
+	}
+	// .form__label
+	&__label {
+		margin: 0px 0px 10px 0px;
+	}
+	// .form__btn
+	&__btn {
+		height: 50px;
+		background-color: #77608d;
+		padding: 0px 30px;
+		color: #fff;
+		font-size: 16px;
+		cursor: pointer;
+	}
+}
+//===========================================================
+// Простой рейтинг
+//===========================================================
+.simple-rating {
+	position: relative;
+	font-size: 40px;
+	display: inline-block;
+	&:before {
+		content: "★★★★★";
+		display: block;		
+	}
+	// .simple-rating__items
+	&__items {	
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: flex;
+		flex-direction: row-reverse;
+		overflow: hidden;
+	}
+	// .simple-rating__item
+	&__item {
+		position: absolute;
+		width: 0%;
+		height: 0%;
+		top: 0;
+		left: 0;
+		visibility: hidden;
+		&:checked,
+		&:checked ~ .simple-rating__label {
+			color: #ffd300;
+		}
+	}
+	// .simple-rating__label
+	&__label {
+		flex: 0 0 20%;
+		height: 100%;
+		cursor: pointer;
+		color: #fff;
+		&:before {
+			content: "";
+			content: "★";
+			display: block;
+			transition: color 0.3s ease 0s;			
+		}
+		&:hover,
+		&:hover ~ .simple-rating__label,
+		&:checked ~ .simple-rating__label:hover {
+			color: #ffd300;
+		}
+	}
+}
+//===========================================================
+// Рейтинг с JS
+//===========================================================
+.rating {
+	display: flex;
+	align-items: flex-end;
+	font-size: 40px;
+	line-height: 0.75;
+	transition: opacity 0.3s ease 0s;
+	// .rating__body
+	&__body {
+		position: relative;
+		&:before {
+			content: "★★★★★";
+			display: block;		
+		}
+	}
+	// .rating__active
+	&__active {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		&:before {
+			content: "★★★★★";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			color: #ffd300;
+		}
+	}
+	// .rating__items
+	&__items {
+		display: flex;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	// .rating__item
+	&__item {
+		flex: 0 0 20%;
+		height: 100%;
+		opacity: 0;
+	}
+	// .rating__value
+	&__value {
+		font-size: 50%;
+		line-height: 1;
+		padding: 0px 0px 0px 10px;
+	}
+	// .rating_sending
+	&_sending {
+		opacity: 0.2;
+	}
+	// .rating_set
+	&_set {
+		.rating__active,
+		.rating__item {
+			cursor: pointer;
+		}
+	}
+}
+//===========================================================
+//===========================================================
+//===========================================================
+
+/* < ОСНОВНОЙ БЛОК */
+
+
+

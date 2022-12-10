@@ -1,0 +1,23 @@
+//&display=swap&subset=cyrillic-ext
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap");
+
+/* ПЕРЕВОД ЕДИНИЦ > */
+// В проценты
+@function prc($pxOne, $pxTwo) {
+   $result: math.div($pxOne, $pxTwo) * 100%;
+   @return $result;
+}
+
+// REM
+@function rem($px) {
+   $result: math.div($px, 16)+rem;
+   @return $result;
+}
+
+// EM
+@function em($px, $current: 16) {
+   $result: math.div($px, $current)+em;
+   @return $result;
+}
+
+/* < ПЕРЕВОД ЕДИНИЦ */

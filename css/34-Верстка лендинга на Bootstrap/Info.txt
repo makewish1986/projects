@@ -1,0 +1,13 @@
+Верстка одностраничного сайта на Bootstrap
+Знакомство с Bootstrap для начинающих.
+Повторение серии уроков:
+https://youtu.be/MbOcveDTHZQ
+https://youtu.be/sFRrfUt7jc0
+https://youtu.be/S0i1jHCHbQw
+https://youtu.be/-dQTYZFe6Os
+https://youtu.be/ZUH3mYgCVX8
+https://youtu.be/8SO1p5hiS7Q
+https://youtu.be/_Vbl_V_XNIw
+https://youtu.be/MQoMJdJKuKM
+https://youtu.be/yZZn_g0nOPI
+https://youtu.be/kEkAz1S9MRk

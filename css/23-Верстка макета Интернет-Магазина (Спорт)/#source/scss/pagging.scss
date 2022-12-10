@@ -1,0 +1,45 @@
+.pagging {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   // .pagging__arrow
+   &__arrow {
+      cursor: pointer;
+      width: 37px;
+      height: 33px;
+      background: url('../img/icons/arrow_sl-grey.png') 0 0 no-repeat;
+      @media (min-width: $md2+px) {
+         &:hover {
+            background: url('../img/icons/arrow_sl-hover.png') 0 0 no-repeat;
+         }
+      }
+      &:first-child {
+         transform: rotate(-180deg);
+      }
+      &:last-child {
+         
+      }
+
+   }
+   // .pagging__list
+   &__list {
+      margin: 0px 35px;
+      display: flex;
+      li {}
+   }
+   // .pagging__item
+   &__item {
+      width: 33px;
+      height: 33px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #333;
+      font-weight: 900;
+      &._active {
+         background-color: #fd8424;
+         color: #fff;
+      }
+   }
+}

@@ -1,0 +1,99 @@
+.works {   
+   // .works__items
+   &__items {
+      padding: 0px 0px 60px 0px;
+      @media (max-width: $md3+px) {
+         padding: 0px 0px 30px 0px;
+      }
+   }
+   // .works__main-title
+   &__main-title {
+      margin: 0px 0px 45px 0px;
+      @media (max-width: $md3+px) {
+         margin: 0px 0px 20px 0px;
+      }
+   } 
+   // .works__item
+   &__item {      
+      padding: 0px 0px 30px 0px;
+      border-bottom: 1px solid #e0e0e0;
+      margin: 0px 0px 30px 0px;
+      &:last-child {
+         margin: 0;
+      }
+      @media (min-width: $md3+px) {
+         display: flex;
+         align-items: flex-start;
+      }
+   }
+   // .works__image
+   &__image {
+      display: block;
+      flex: 0 0 246px;
+      border-radius: 6px;
+      min-height: 180px;
+      overflow: hidden;
+      @media (max-width: $md3+px) {
+         padding: 0px 0px 60% 0px;
+         margin: 0px 0px 17px 0px;
+      }
+   }
+   // .works__body
+   &__body {
+      flex: 1 1 auto;      
+      @media (min-width: $md3+px) {
+         padding: 0px 0px 0px 18px;
+      }
+   }
+   // .works__title
+   &__title {
+      display: inline-block;
+      color: inherit;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: calc(44/30)*100%;
+      margin: 0px 0px 15px 0px;
+      transition: color 0.3s ease 0s;
+      @media (max-width: $md3+px) {
+         font-size: 24px;
+      }
+      @media (min-width: $md3+px) {
+         &:hover {
+            color: #ff6464;
+         }
+      }
+   }
+   // .works__info
+   &__info {
+      display: flex;
+      align-items: center;
+      margin: 0px 0px 15px 0px;
+   }
+   // .works__year
+   &__year {
+      background-color: #142850;
+      height: 25px;
+      border-radius: 16px;
+      padding: 0px 10px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      @media (max-width: $md3+px) {
+         font-size: 16px;
+      }
+   }
+   // .works__category
+   &__category {
+      color: #8695a4;
+      font-size: 20px;
+      margin: 0px 0px 0px 25px;
+      @media (max-width: $md3+px) {
+         font-size: 16px;
+      }
+   }
+   // .works__text
+   &__text {}
+}

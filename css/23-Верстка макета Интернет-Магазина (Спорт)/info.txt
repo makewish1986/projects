@@ -1,0 +1,10 @@
+Повторение урока (5 частей)
+https://www.youtube.com/watch?v=j_k6bk20aQ4
+https://www.youtube.com/watch?v=YpgTB6Th8Jo
+https://www.youtube.com/watch?v=uAZsdUtausg
+https://www.youtube.com/watch?v=SqmKM6WHuIo
+https://www.youtube.com/watch?v=huPi5XDwBlo
+
+Создавалась через сборку GULP
+Подключение слайдера SWIPER во всех местах, где нужен был слайдер.
+Подключение nouislider для бегунка с ценой (классы при этом брались не все, а только те, что нужны)

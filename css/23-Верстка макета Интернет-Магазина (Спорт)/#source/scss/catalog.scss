@@ -1,0 +1,394 @@
+//=======================================
+.filter {
+	border: 4px solid #72c9d4;
+	// .filter__title
+	&__title {
+		padding: 25px 15px 5px 15px;
+		color: #36949f;
+		font-size: 24px;
+		font-weight: 700;
+		text-transform: uppercase;
+		transition: all 0.3s ease 0s;
+		@media (max-width: $md2+px) {
+			padding: 25px 15px 25px 15px;
+			&._active {
+				padding: 25px 15px 5px 15px;
+			}
+		}
+	}
+	// .filter__content
+	&__content {
+		@media (max-width: $md2+px) {
+			display: none;
+		}
+		@media (min-width: $md2+px) {
+			display: block !important;
+		}
+	}
+	// .filter__body
+	&__body {}
+	// .filter__section
+	&__section {}
+	// .filter__footer
+	&__footer {
+		padding: 15px;
+		display: flex;
+		justify-content: space-between;
+	}
+	// .filter__btn
+	&__btn {
+		padding: 0px 15px;
+		text-transform: none;
+	}
+}
+.section-filter {
+	padding: 15px;
+	border-bottom: 1px solid #72c9d4;
+	&:last-child {
+		border: 0;
+	}
+	// .section-filter__title
+	&__title {
+		color: #36949f;
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 22px;
+		min-height: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		&._spoiler {
+			cursor: pointer;
+			&:after {
+				content: "";
+				border-radius: 50%;
+				flex: 0 0 30px;
+				width: 30px;
+				height: 30px;
+				border: 1px solid #72c9d4;
+				background: url('../img/icons/li_arrow.png') center no-repeat;
+			}
+			&._active {
+				color: #000;
+				&:after {
+					content: "";
+					border: 1px solid #cbcbcb;
+					background: url('../img/icons/spoiler_arrow.png') center no-repeat;
+				}
+			}
+		}
+		// Скрываем тело спойлера при первом открытии
+		&._spoiler + .section-filter__body {
+			display: none;
+		}
+	}
+	// .section-filter__body
+	&__body {
+		padding: 15px 0px 0px 0px;
+	}
+	// .section-filter__checkbox
+	&__checkbox {
+		display: block;
+		margin: 0px 0px 15px 0px;
+		&:last-child {
+			margin: 0;
+		}
+	}
+}
+//=======================================
+// Чтобы не брать полностью файл стилей nouislider,
+// берем оттуда только нужные стили
+.price-filter {
+	// .price-filter__slider
+	&__slider {
+		height: 4px;
+		background-color: #eaeaea;
+		margin: 0px 11px 50px;
+		position: relative;
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			width: 11px;
+			height: 4px;
+			background-color: #eaeaea;
+			top: 0;
+		}
+		&::before {
+			left: -10px;	
+		}
+		&::after {
+			right: -10px;
+		}
+		.noUi-base,
+		.noUi-connects {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			// z-index: 1;
+		}
+		.noUi-origin,
+		.noUi-connect {
+			will-change: transform;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			top: 0;
+			right: 0;
+			transform-origin: 0 0;
+			transform-style: flat;
+		}
+		.noUi-connect {
+			background-color: #ffcda5;
+		}
+		.noUi-handle {
+			cursor: pointer;
+			position: absolute;
+			top: -10px;
+			right: -11.5px;
+			width: 23px;
+			height: 23px;
+			border: 1px solid #f68038;
+			border-radius: 50%;
+			background-color: #fff;
+			&::after {
+				content: "";
+				width: 15px;
+				border-radius: 50%;
+				height: 15px;
+				position: absolute;
+				left: 3px;
+				top: 3px;
+				background-color: #f68038;
+			}
+		}
+		.noUi-tooltip {		
+			position: absolute;
+			bottom: -22px;
+			left: 50%;
+			transform: translate(-50%, 0px);
+			color: #999;
+			font-size: 12px;
+			font-weight: 300;
+		}
+	}
+	// .price-filter__values
+	&__values {}
+}
+.values-price-filter {
+	display: flex;
+	margin: 0px -15px;
+	// .values-price-filter__column
+	&__column {
+		padding: 0px 15px;
+		flex: 0 1 50%;
+		display: flex;
+		align-items: center;
+	}
+	// .values-price-filter__label
+	&__label {
+		color: #999;
+		font-size: 12px;
+		font-weight: 300;
+	}
+	// .values-price-filter__input
+	&__input {
+		padding: 0px 0px 0px 10px;
+		flex: 1 1 auto;
+		.input {
+			font-size: 12px;
+			height: 20px;
+			padding: 0px 10px;
+		}
+	}
+}
+//=======================================
+.compare-filter {
+	// .compare-filter__items
+	&__items {
+		padding: 0px 13px 0px 0px;
+		margin: 0px 0px 20px 0px;
+	}
+	// .compare-filter__item
+	&__item {
+		display: flex;
+		justify-content: space-between;
+		margin: 0px 0px 10px 0px;
+		&:last-child {
+			margin: 0;
+		}
+	}
+	// .compare-filter__link
+	&__link {
+		color: #1ab9ce;
+		font-size: 12px;
+		line-height: 16px;
+		font-weight: 300;
+		text-decoration: underline;
+	}
+	// .compare-filter__remove
+	&__remove {
+		flex: 0 0 10px;
+		width: 10px;
+		height: 10px;
+		background: url('../img/icons/remove.png') 0 0 no-repeat;
+		margin: 3px 0px 0px 5px;
+		@media (min-width: $md2+px) {
+			&:hover {
+				background: url('../img/icons/remove_h.png') 0 0 no-repeat;
+			}
+		}
+	}
+	// .compare-filter__footer
+	&__footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	// .compare-filter__button
+	&__button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 33px;
+		background-color: #1ab9ce;
+		padding: 0px 13px;
+		border-radius: 25px;
+		span {
+			display: inline-block;
+			line-height: 33px;
+			background: url('../img/icons/compare.png') left no-repeat;
+			padding: 0px 0px 0px 30px;
+			text-transform: uppercase;
+			color: #fff;
+			font-weight: 900;
+		}
+	}
+	// .compare-filter__clean
+	&__clean {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background: #e6e6e6 url('../img/icons/trash.png') center no-repeat;
+		&:hover {
+			background: #f68038 url('../img/icons/trash_h.png') center no-repeat;
+		}
+	}
+}
+//=======================================
+.catalog {
+	// .catalog__title
+	&__title {
+		color: #dadada;
+		font-family: "UniSans";
+		font-size: 30px;
+		letter-spacing: 0.75px;
+		text-transform: uppercase;
+		line-height: 1.3;
+		margin: 0px 0px 20px 0px;
+	}
+	// .catalog__actions
+	&__actions {
+		margin: 0px 0px 15px 0px;
+	}
+	// .catalog__navi
+	&__navi {}
+}
+.actions-catalog {
+	background-color: #f3f3f3;
+	
+	align-items: center;
+	padding: 10px 20px;
+	@media (min-width: 540px) {
+		display: flex;
+	}
+	// .actions-catalog__order
+	&__order {
+		@media (max-width: 540px) {
+			margin: 0px 0px 15px 0px;
+		}
+	}
+	// .actions-catalog__view
+	&__view {}
+}
+.order-catalog {	
+	@media (min-width: 540px) {
+		flex: 1 1 auto;
+		display: flex;
+		align-items: center;
+	}
+	// .order-catalog__label
+	&__label {
+		margin: 0px 20px 0px 0px;
+		color: #333;
+		font-size: 14px;
+		font-weight: 900;
+		@media (max-width: 540px) {
+			margin: 0px 0px 10px 0px;
+		}
+	}
+	// .order-catalog__select
+	&__select {}
+}
+.view-catalog {
+	display: flex;
+	// .view-catalog__item
+	&__item {
+		cursor: pointer;
+		width: 36px;
+		height: 36px;
+		margin: 0px 0px 0px 8px;
+		@media (max-width: 540px) {
+			margin: 0px 10px 0px 0px;
+		}
+		// .view-catalog__item_grid
+		&_grid {
+			background: #fff url('../img/icons/grid.png') center no-repeat;
+		}
+		// .view-catalog__item_list
+		&_list {
+			background: #4da0b9 url('../img/icons/list.png') center no-repeat;
+		}
+	}
+}
+//=======================================
+.navi-catalog {
+	border-top: 1px solid #ededed;
+	border-bottom: 1px solid #ededed;
+	padding: 10px 15px;
+	@media (min-width: 540px) {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	// .navi-catalog_top
+	&_top {
+		margin: 0px 0px 23px 0px;
+	}
+	// .navi-catalog__show
+	&__show {}
+	// .navi-catalog__pages
+	&__pages {}
+}
+.show-catalog {
+	@media (min-width: 540px) {
+		display: flex;
+		align-items: center;
+	}
+	// .show-catalog__label
+	&__label {
+		margin: 0px 20px 0px 0px;
+		color: #333;
+		font-size: 14px;
+		font-weight: 900;
+		@media (max-width: 540px) {
+			margin: 0px 0px 10px 0px;
+		}
+	}
+	// .show-catalog__select
+	&__select {}
+}
+//=======================================
+//=======================================
+//=======================================

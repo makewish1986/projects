@@ -1,0 +1,261 @@
+@use 'sass:math';
+//========================================
+/* МИКСИНЫ > */
+@import "mixins.scss";
+/* < МИКСИНЫ */
+//========================================
+/* ШРИФТЫ > */
+@import "fonts.scss";
+
+// Иконочные шрифты
+@import "icons.scss";
+
+// Шрифт по умолчанию
+$fontfamily: "Montserrat";
+$fontSize: rem(18);
+/* < ШРИФТЫ*/
+//========================================
+/* НАСТРОЙКИ > */
+// Основные цвета
+$mainColor: #000;
+$mainDarkColor: #141414;
+$mainOrange: #e8aa31;
+// Минимальная ширина страницы
+$minWidth: 320px;
+// Ширина полотна (макета)
+$maxWidth: 1920;
+// Ширина ограничивающего контейнера
+$maxWidthContainer: 1590;
+// Общий отступ у контейнера
+$containerPadding: 30;
+// Тип адаптива:
+// 1 = отзывчивость (у контейнера нет брейкпоинтов)
+// 2 = по брейкпоинтам (контейнер меняет свою ширину по брейкпоинтам)
+$responsiveType: 1;
+// Ширина срабатывания  первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+//Брейкпоинты
+$md1: em($containerWidth); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$md2: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
+$md3: em(767.98); // Телефоны L
+$md4: em(479.98); // Телефоны S
+/* < НАСТРОЙКИ */
+//========================================
+/* ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ > */
+@import "null.scss";
+body {
+	font-weight: 500;
+	// Скролл заблокирован
+	&._lock {
+		overflow: hidden;
+	}
+}
+/* < ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ */
+//========================================
+/* ПОПАПЫ > */
+@import "popup.scss";
+/* < ПОПАПЫ */
+//========================================
+/* ОБОЛОЧКА > */
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	// Сайт загружен
+	&.loaded {}
+}
+/* < ОБОЛОЧКА */
+//========================================
+/* ОСНОВНАЯ СЕТКА > */
+// Стили будут применяться ко всем классам,
+// содержащим *__container
+// Например header__container, main__container и т.д.
+
+@if ($responsiveType==1) {
+	// Отзывчивая
+	[class*="__container"] {
+		@if ($maxWidthContainer>0) {
+			max-width: rem($maxWidthContainer);
+			box-sizing: content-box;
+			margin: 0 auto;
+		}
+		@if ($containerPadding>0) {
+			padding: 0 rem(math.div($containerPadding, 2));
+		}
+	}
+}
+@else {
+	// По брейкпоинтам
+	[class*="__container"] {
+		margin: 0 auto;
+		@if ($maxWidthContainer>0) {
+			max-width: rem($maxWidthContainer);
+			box-sizing: content-box;
+		}
+		@else {
+			@if ($containerPadding>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+		@media (max-width: $md1) {
+			max-width: rem(970);
+		}
+		@media (max-width: $md2) {
+			max-width: rem(750);
+		}
+		@media (max-width: $md3) {
+			max-width: none;
+			@if ($containerPadding>0 and $maxWidthContainer>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+	}
+}
+/* < ОСНОВНАЯ СЕТКА */
+
+/* ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ > */
+@import "forms";
+@import "ui";
+@import "libs/nouislider"; // Плагин nouislider (ползунки)
+/* < ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ */
+
+/* ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ > */
+@import "header";
+@import "home";
+@import "catalog";
+@import "products-slider";
+@import "footer";
+@import "product";
+/* < ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ */
+
+/* ОСНОВНОЙ БЛОК > */
+.page {
+	flex: 1 1 auto;
+	// .page_home
+	&_home {}
+	// .page_inner
+	&_inner {
+		padding-top: rem(30);
+	}
+	// .page__header
+	&__header {
+		margin-bottom: rem(30);
+	}
+	// .page__title
+	&__title {}
+	// .page__breadcrumbs
+	&__breadcrumbs {}
+	// .page__main-block
+	&__main-block {}
+	// .page__catalog-cards
+	&__catalog-cards {}
+	// .page__products-slider
+	&__products-slider {}
+	// .page__hits-products
+	&__hits-products {}
+	// .page__new-products
+	&__hits-products {}
+	// .page__sale-products
+	&__sale-products {}
+	// .page__articles-module
+	&__articles-module {}
+	// .page__products-block
+	&__products-block {}
+}
+//========================================
+/* < ОСНОВНОЙ БЛОК */
+//================================================================
+/* ОБЩИЕ СТИЛИ > */
+.breadcrumbs {
+	white-space: nowrap;
+	overflow: auto;
+	height: rem(22);
+	// .breadcrumbs__list
+	&__list {
+		display: flex;
+	}
+	// .breadcrumbs__item
+	&__item {}
+	// .breadcrumbs__link
+	&__link {
+		opacity: 0.5;
+		display: flex;
+		align-items: center;
+		&:after {
+			content: "\e900";
+			@extend %ic;
+			transform: rotate(-90deg);
+			font-size: rem(6);
+			margin: 0px em(10, 6);
+		}
+	}
+	// .breadcrumbs__current
+	&__current {
+		color: $mainOrange;
+	}
+}
+//================================================================
+.pagging {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	@include adaptive-value("gap", 30, 15, 1);
+	@media (max-width: $md2) {
+		justify-content: center;
+	}
+	// .pagging__arrow
+	&__arrow {
+		color: $mainOrange;
+		&:before {
+			font-size: rem(10);
+			transform: rotate(-90deg);
+		}
+		&:disabled {
+			color: rgba(0, 0, 0, 0.12);
+		}
+		// .pagging__arrow_left
+		&_left {
+			transform: rotate(-180deg);
+		}
+		// .pagging__arrow_right
+		&_right {}
+	}
+	// .pagging__list
+	&__list {
+		display: flex;
+		align-items: center;
+		gap: rem(13);
+	}
+	// .pagging__item
+	&__item {}
+	// .pagging__link
+	&__link {
+		width: rem(34);
+		height: rem(34);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		&._active {
+			background-color: $mainOrange;
+			color: #fff;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: $mainOrange;
+				color: #fff;
+			}
+		}
+	}
+}
+//================================================================
+.title {
+	font-weight: 700;
+	font-size: 24px;
+	line-height: math.div(29, 24);
+	&:not(:last-child) {
+		margin-bottom: em(25, 24);
+	}
+}
+/* < ОБЩИЕ СТИЛИ */

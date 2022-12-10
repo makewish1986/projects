@@ -1,0 +1,77 @@
+/* SELECT >*/
+.select {
+	position: relative;
+	// .select__item
+	&__item {
+		position: relative;
+	}
+	// .select__title
+	&__title {
+		color: #000;
+		border: 1px solid #d9d9d9;
+		background-color: #fff;
+		cursor: pointer;
+		border-radius: 4px;
+	}
+	// .select__value
+	&__value {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 16px;
+		height: 50px;
+		padding: 0px 20px;
+		flex-direction: row-reverse;
+		span {
+			height: 1em;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+		}
+		&:before {
+			content: "";
+			display: inline-block;
+			transition: all 0.3s ease 0s;
+			width: 11px;
+			height: 7px;
+			background: url('../img/icons/select.png') center / 100% no-repeat;
+		}
+	}
+	// .select__options
+	&__options {
+		color: #000;
+		display: none;
+		position: absolute;
+		top: 49px;
+		left: 0;
+		border-radius: 0 0 4px 4px;
+		min-width: 100%;
+		background-color: #fff;
+		border-top: 0;
+		border: 1px solid #d9d9d9;
+		border-top: 0;
+		font-size: 16px;
+		padding: 0px 0px 5px 0px;
+	}
+	// .select__option
+	&__option {
+		cursor: pointer;
+		padding: 10px 20px;
+		margin: 0px 0px 0px 0px;
+	}
+	// .select ._active
+	&._active {
+		z-index: 5;
+		.select__value {
+			&:before {
+				transform: rotate(-180deg);				
+			}
+		}
+		.select__options {
+			display: block;
+		}
+	}
+}
+/* < SELECT */
+//===============================================================

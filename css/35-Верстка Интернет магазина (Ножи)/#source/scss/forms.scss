@@ -1,0 +1,536 @@
+/* ФОРМЫ >*/
+.form {}
+.form-row {
+	@include flexbox();
+	margin: 0px 15px;
+}
+.form__column {
+	padding: 0px 15px
+}
+.form-input {}
+.form-button {}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+/* < ФОРМЫ */
+//===============================================================
+/* BUTTONS >*/
+.btn {
+	display: inline-block;
+	text-align: center;
+	background-color: $mainOrange;
+	box-shadow: 0px 4px 20px rgba(232, 170, 49, 0.43);
+	border-radius: 3px;
+	font-weight: 600;
+	font-size: rem(20);
+	color: #fff !important;
+	padding: rem(8) rem(52);
+	line-height: math.div(32, 20);
+	transition: box-shadow 0.3s ease 0s;
+	@media (min-width: 992px) {
+		&:hover {
+			box-shadow: 0px 4px 25px rgba(232, 170, 49, 0.63);
+		}
+	}
+	&_border {
+		background-color: #fff;
+		border: 1px solid $mainOrange;
+		color: $mainOrange !important;
+		box-shadow: none;
+	}
+	&_black {
+		background-color: #000;
+		color: #fff;
+		box-shadow: none;
+		padding: rem(8) rem(30);
+	}
+}
+/* < BUTTONS */
+//===============================================================
+/* INPUT >*/
+.input {
+	border-radius: 0 !important;
+	border: 1px solid #e5e5e5;
+	height: 30px;
+	width: 100%;
+	display: block;
+	padding: 0px 15px;
+	&._focus {}
+	&._error {}
+}
+textarea.input {
+	resize: none;
+	padding: 0px 0px;
+}
+/* < INPUT */
+//===============================================================
+/* CHECKBOX >*/
+.checkbox {
+	display: block;
+	position: relative;
+	// .checkbox__input
+	&__input {
+		position: absolute;
+		width: 0;
+		height: 0;
+		opacity: 0;
+		visibility: hidden;
+		&:checked+.checkbox__text:before {
+			// border: 2px solid #009aaf;
+		}
+		&:checked+.checkbox__text:after {
+			content: "";
+			position: absolute;
+			left: 2px;
+			top: 2px;
+			width: rem(16);
+			height: rem(16);
+			background-color: #e8aa31;
+			border-radius: 2px;
+		}
+	}
+	// .checkbox__text
+	&__text {
+		display: inline-flex;
+		align-items: center;
+		position: relative;
+		color: #666;
+		line-height: calc(15/12);
+		cursor: pointer;
+		&:before {
+			content: "";
+			align-self: flex-start;
+			margin: 0px 14px 0px 0px;
+			flex: 0 0 rem(20);
+			left: 0;
+			top: 0;
+			width: rem(20);
+			height: rem(20);
+			background: #fff;
+			border: 1px solid #e8aa31;
+			border-radius: 2px;
+		}
+		small {
+			color: $mainOrange
+		}
+	}
+	a {
+		color: #fff;
+		text-decoration: underline;
+		@media (min-width: 992px) {
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}
+/* < CHECKBOX */
+
+//===============================================================
+/* SELECT >*/
+.select {
+	position: relative;
+	// .select__item
+	&__item {
+		position: relative;
+	}
+	// .select__title
+	&__title {
+		color: #000;
+		border: 1px solid #d9d9d9;
+		background-color: #fff;
+		cursor: pointer;
+		border-radius: 4px;
+		@media (max-width: $md2+px) {
+			font-size: 18px;
+		}
+	}
+	// .select__value
+	&__value {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 14px;
+		height: 30px;
+		padding: 0px rem(15);
+		flex-direction: row-reverse;
+		span {
+			height: 1em;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 1;
+			-webkit-box-orient: vertical;
+		}
+		&:before {
+			content: "";
+			display: inline-block;
+			transition: all 0.3s ease 0s;
+			width: 11px;
+			height: 7px;
+			background: url('../img/icons/select.png') center / 100% no-repeat;
+		}
+	}
+	// .select__input
+	&__input {
+		width: 100%;
+		height: 100%;
+		background-color: transparent;
+	}
+	// .select__options
+	&__options {
+		color: #000;
+		display: none;
+		position: absolute;
+		top: 29px;
+		left: 0;
+		border-radius: 0 0 4px 4px;
+		min-width: 100%;
+		background-color: #fff;
+		border-top: 0;
+		border: 1px solid #d9d9d9;
+		border-top: 0;
+		font-size: 14px;
+		padding: 10px 0px 5px 0px;
+		@media (max-width: $md2+px) {
+			font-size: 18px;
+		}
+	}
+	// .select__option
+	&__option {
+		cursor: pointer;
+		padding: 5px 15px;
+		margin: 0px 0px 0px 0px;
+		height: 30px;
+		@media (min-width: 992px) {
+			&:hover {
+				background-color: #d9d9d9;
+			}
+		}
+	}
+	// .select ._active
+	&._active {
+		z-index: 5;
+		.select__value {
+			&:before {
+				transform: rotate(-180deg);
+			}
+		}
+		.select__options {
+			display: block;
+		}
+	}
+	// .select_control
+	&_control {
+		.select__title {
+			border: 1px solid rgba(4, 4, 4, 0.3);
+			border-radius: 3px;
+		}
+		.select__value {
+			height: rem(40);
+			color: rgba(0, 0, 0, 0.5);
+			&:before {
+				content: "\e900";
+				font-size: rem(8);
+				@extend %ic;
+				margin-left: em(10, 8);
+			}
+		}
+		.select__option {
+			color: rgba(0, 0, 0, 0.5);
+			@media (any-hover: hover) {
+				&:hover {
+					color: rgba(0, 0, 0, 1);
+				}
+			}
+		}
+	}
+}
+/* < SELECT */
+//===============================================================
+/* QUANTITY >*/
+.quantity {
+	width: 150px;
+	height: 50px;
+	display: flex;
+	border: 1px solid rgba(166, 166, 166, 0.45);
+	// .quantity__button
+	&__button {
+		flex: 0 0 50px;
+		height: rem(50);
+		position: relative;
+		background-color: #000;
+		cursor: pointer;
+		&:before,
+		&:after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transition: all 0.3s ease 0s;
+			margin: 0px 0px 0px -4.5px;
+			background-color: #a6a6a6;
+			width: 9px;
+			height: 1px;
+		}
+		@media (min-width: $md2+px) {
+			&:hover {
+				&:before,
+				&:after {
+					background-color: rgba(0, 0, 0, 0.5);
+				}
+			}
+		}
+		// .quantity__button_plus
+		&_plus {
+			&:before {
+				transform: rotate(-90deg);
+			}
+		}
+		&_minus {}
+	}
+	// .quantity__input
+	&__input {
+		flex: 1 1 auto;
+		input {
+			height: 100%;
+			// color: #a6a6a6;
+			// font-size: 12px;
+			width: 100%;
+			text-align: center;
+		}
+	}
+}
+/* < QUANTITY */
+//===============================================================
+/* RATING >*/
+// Звездный рейтинг
+//===========================================================
+.rating {
+	display: flex;
+	align-items: flex-end;
+	font-size: rem(30);
+	line-height: 0.75;
+	transition: opacity 0.3s ease 0s;
+	// .rating__body
+	&__body {
+		position: relative;
+		letter-spacing: em(8, 30);
+		&:before {
+			content: "★★★★★";
+			display: block;
+		}
+	}
+	// .rating__active
+	&__active {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		&:before {
+			content: "★★★★★";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			color: $mainOrange;
+		}
+	}
+	// .rating__items
+	&__items {
+		display: flex;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	// .rating__item
+	&__item {
+		flex: 0 0 20%;
+		height: 100%;
+		opacity: 0;
+	}
+	// .rating__value
+	&__value {
+		display: none;
+		font-size: 50%;
+		line-height: 1;
+		padding: 0px 0px 0px 10px;
+	}
+	// .rating__info
+	&__info {
+		color: #ababab;
+		font-size: rem(16);
+	}
+	// .rating_sending
+	&_sending {
+		opacity: 0.2;
+	}
+	// .rating_set
+	&_set {
+		.rating__active,
+		.rating__item {
+			cursor: pointer;
+		}
+	}
+}
+/* < RATING */
+//===========================================================
+/* OPTIONS >*/
+.options {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	// .options__item
+	&__item {
+		position: relative;
+		cursor: pointer;
+		&._error {}
+	}
+	// .options__input
+	&__input {
+		position: absolute;
+		width: 0;
+		height: 0;
+		opacity: 0;
+		left: 0;
+		top: 0;
+		visibility: hidden;
+		&:checked+.options__text:before {}
+		&:checked+.options__text:after {
+			transform: scale(1);
+		}
+	}
+	// .options__text
+	&__text {
+		display: inline-block;
+		align-items: center;
+		position: relative;
+		font-size: 16px;
+		color: #fff;
+		letter-spacing: -0.3px;
+		line-height: calc(20/16);
+		&:before {
+			content: "";
+			align-self: flex-start;
+			margin: 0px 14px 0px 0px;
+			flex: 0 0 20px;
+			left: 0;
+			top: 0;
+			border-radius: 50%;
+			width: 20px;
+			height: 18px;
+			background-color: #fff;
+			border: 1px solid #a7a9ac;
+		}
+		&:after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			transform: scale(0);
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background-color: #77243a;
+			position: absolute;
+			left: 5px;
+			top: 4px;
+		}
+	}
+}
+/* < OPTIONS */
+//===============================================================
+
+
+
+//===============================================================
+//===============================================================
+/* СТАРЫЙ SELECT >*/
+// .select {
+// 	position: relative;
+// 	cursor: pointer;
+// 	//.select-block
+// 	&-block {
+// 		position: relative;
+// 	}
+// 	//.select__label
+// 	&__label {
+// 		z-index: 2;
+// 		position: absolute;
+// 		top: -8px;
+// 		background-color: #f7f7f7;
+// 		padding: 0px 5px;
+// 		color: #979797;
+// 		font-weight: 600;
+// 		font-size: 13px;
+// 		line-height: 1.3;
+// 	}
+// 	//.select-title
+// 	&-title {
+// 		z-index: 1;
+// 		width: 100%;
+// 		height: 55px;
+// 		border: 1px solid #dedede;
+// 		position: relative;
+// 		background-color: #fff;
+// 		//.select-title__arrow
+// 		&__arrow {
+// 			position: absolute;
+// 			width: 45px;
+// 			height: 100%;
+// 			top: 0;
+// 			right: 0;
+// 			background: url('../img/icons/select-arrow.png') center no-repeat;
+// 		}
+// 		//.select-title__value
+// 		&__value {
+// 			color: #000;
+// 			font-weight: 700;
+// 			font-size: 18px;
+// 			line-height: 53px;
+// 			display: block;
+// 			overflow: hidden;
+// 			padding: 0px 45px 0px 25px;
+// 			white-space: nowrap;
+// 			text-transform: none;
+// 			text-overflow: ellipsis;
+// 		}
+// 	}
+// 	//.select-options
+// 	&-options {
+// 		position: absolute;
+// 		z-index: 10;
+// 		top: 54px;
+// 		display: none;
+// 		overflow: hidden;
+// 		min-width: 100%;
+// 		background-color: #fff;
+// 		border: 1px solid #dedede;
+// 		padding: 10px 20px 10px 25px;
+// 		//.select-options-scroll
+// 		&-scroll {
+// 			max-height: 80px;
+// 			overflow: auto;
+// 		}
+// 		//.select-options-list
+// 		&-list {
+// 			padding: 0;
+// 		}
+// 		//.select-options-value
+// 		&__value {
+// 			color: #000;
+// 			font-size: 20px;
+// 			margin: 0px 0px 15px 0px;
+// 			&:last-child {margin: 0;}
+// 			&:hover {color: #000;}
+// 		}
+// 	}
+// }
+/* < СТАРЫЙ SELECT */

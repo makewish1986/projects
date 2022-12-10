@@ -1,0 +1,122 @@
+/* МИКСИНЫ > */
+@import "mixins.scss";
+/* < МИКСИНЫ */
+
+/* ШРИФТЫ > */
+@import "fonts.scss";
+
+// Иконочные шрифты
+@import "icons.scss";
+
+// Шрифт по умолчанию
+$fontfamily:"Heebo";
+/* < ШРИФТЫ*/
+
+/* ПЕРЕМЕННЫЕ > */
+$minWidth: 320px;
+$maxWidth: 1152;
+$maxWidthContainer: 856;
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+/* < ПЕРЕМЕННЫЕ */
+
+/* ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ > */
+@import "null.scss";
+body {
+	color: #000;
+	font-size: 14px;
+	&._lock {
+		overflow: hidden;
+	}
+}
+//========================================
+.title {
+	font-size: 44px;
+	font-weight: 700;
+	line-height: calc(60/44)*100%;
+	@media (max-width: $md3+px) {
+		font-size: 32px;
+	}
+}
+.text {
+	font-size: 16px;
+   line-height: calc(24/16)*100%;
+}
+.title-posts {
+	font-size: 22px;
+	@media (max-width: $md3+px) {
+		font-size: 18px;
+		text-align: center;
+	}
+}
+.social {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+   // .social__item
+   &__item {
+		transition: color 0.3s ease 0s;
+		margin: 0px 17px;
+		font-size: 30px;
+		color: inherit;
+		@media (min-width: $md2+px) {
+			&:hover {
+				color: #ff6464;
+			}
+		}
+   }
+}
+/* < ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ */
+
+/* ОБОЛОЧКА > */
+.wrapper{
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	&.loaded{}
+}
+/* < ОБОЛОЧКА */
+
+/* ОСНОВНАЯ СЕТКА > */
+._container{
+	max-width: $maxWidthContainer+px;
+	margin: 0 auto;
+	@media (max-width: $md1+px){max-width: 750px;}
+	@media (max-width: $md2+px){max-width: none;padding:0 10px;}
+}
+/* < ОСНОВНАЯ СЕТКА */
+
+/* ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ > */
+@import "forms";
+@import "ui";
+// @import "libs/nouislider"; // Плагин nouislider (ползунки)
+/* < ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ */
+
+/* ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ > */
+@import "header";
+@import "home";
+@import "footer";
+@import "works";
+@import "blog";
+@import "article";
+/* < ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ */
+
+/* ОСНОВНОЙ БЛОК > */
+.page {
+	padding: 90px 0px 0px 0px;
+	flex: 1 1 auto;
+	@media (max-width: $md3+px) {
+		padding: 30px 0px 0px 0px;
+	}
+}
+//========================================
+
+/* < ОСНОВНОЙ БЛОК */
+
+
+
+

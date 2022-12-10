@@ -1,0 +1,89 @@
+
+/* ФОН ВМЕСТО КАРТИНКИ > */
+._ibg {
+	background-position: top;
+	background-size: cover;
+	background-repeat: no-repeat;
+	img {
+		display: none;
+	}
+}
+/* < ФОН ВМЕСТО КАРТИНКИ */
+
+//====================
+
+/* СЛАЙДЕР SLICK-CLIDER > */
+.slick-slider {
+	position: relative;
+	.slick-track,.slick-list {}
+	.slick-list {
+		overflow: hidden;
+	}
+	.slick-track {
+		@include flexbox();
+	}
+	.slick-slide {}
+	.slick-dots {
+		li {
+			button {}
+			&.slick-active {
+				button {}
+			}
+		}
+	}
+}
+/* < СЛАЙДЕР SLICK-CLIDER */
+/* СЛАЙДЕР SWIPE > */
+// Если используется автоматическое создание html структуры слайдера Swiper через скрипт "Build slider" в файле "sliders.js",
+// То нужны следующие стили для класса '._swiper'
+// Эти стили соответствуют стилям класса '.swiper' в оригинальном css свайпера
+._swiper {
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+	overflow:hidden;
+	list-style:none;
+	padding:0;
+	z-index:1
+}
+.swiper-pagination-fraction {
+	width: auto;
+}
+/* < СЛАЙДЕР SWIPE */
+
+/* ГОТОВЫЕ КЛАССЫ > */
+.row:after {
+	display: block;
+	content: "";
+	clear: both;
+}
+.rub:after {
+	content: "₽"; //Знак рубля
+}
+/* < ГОТОВЫЕ КЛАССЫ */
+//===========================================================================
+/* ПРЕВРАЩЕНИЕ ЦВЕТНОГО В СЕРОЕ > */
+// Можно добавлять в css через @extend %graystyle;
+%graystyle {
+	transition: all 0.3s ease 0s;
+	filter: grayscale(1);
+	-webkit-filter: grayscale(1);
+	-moz-filter: grayscale(1);
+	-o-filter: grayscale(1);
+}
+%graystyleoff {
+	filter: grayscale(0);
+	-webkit-filter: grayscale(0);
+	-moz-filter: grayscale(0);
+	-o-filter: grayscale(0);
+}
+/* < ПРЕВРАЩЕНИЕ ЦВЕТНОГО В СЕРОЕ */
+//===========================================================================
+/* ТАБЫ (мои стили, проверить, если встретятся) > */
+._tabs-block {
+	display: none;
+	&._active {
+		display: block;
+	}
+}
+/* < ТАБЫ (мои стили, проверить, если встретятся) */
