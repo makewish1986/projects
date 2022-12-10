@@ -1,0 +1,36 @@
+html {
+  font-size: 10px; /* px значит 'пиксели': базовый шрифт будет 10 пикселей в высоту  */
+  font-family: 'Fira Sans', sans-serif;
+  background-color: #b4c78f;
+}
+body {
+  width: 600px;
+  margin: 0 auto;
+  background-color: #d9d9d9;
+  padding: 0 20px 20px 20px;
+  border: 5px solid black;
+}
+h1 {
+  font-size: 60px;
+  text-align: center;
+  margin: 0;
+  padding: 20px 0;
+  color: #b4c78f;
+  text-shadow: 2px 2px 5px black;
+}
+h2 {
+  font-size: 20px;
+  margin: 0;
+  padding: 20px 0;
+  color: #303030;
+}
+img {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+}
+p, li {
+  font-size: 16px;
+  line-height: 2;
+  letter-spacing: 1px;
+}
